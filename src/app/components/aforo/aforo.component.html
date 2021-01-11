@@ -29,19 +29,19 @@
 </div>
 
 
-<div class="row" *ngIf="chartOptions" style=" position: relative; top: -40vh;">
+<div class="row" *ngIf="chartOptions" style=" position: relative; top: -50vh;">
     <div class="col-12 text-center" style="position: relative;
     top: -17vh;
     font-size: 16vh;
     font-weight: 500;">
-        <label style="color: white; ">{{ aforo_actual }}</label>
+        <label style="color: white; ">{{ numberWithPoint(aforo_actual) }}</label>
     </div>
 
     <div class="col-6">
         <div class="text-center" style="color: white; font-size: 2.5vh;">Mínimo <br> 1 persona</div>
     </div>
     <div class="col-6">
-        <div class="text-center" style="color: white; font-size: 2.5vh;">Máximo <br> {{ capacidad }} personas</div>
+        <div class="text-center" style="color: white; font-size: 2.5vh;">Máximo <br> {{ numberWithPoint(capacidad) }} personas</div>
     </div>
 </div>
 
@@ -61,7 +61,7 @@ top: -30vh;">
             <div class="text-center font-white p-5">
                 <div class="font-white-min text-rigth">Máximo permitido</div>
                 <i class="material-icons" style="font-size: 70px ; position: relative; top: 8px;">groups</i>
-                <div class="ml-4  d-inline-flex">{{ capacidad }}</div>
+                <div class="ml-4  d-inline-flex">{{ numberWithPoint(capacidad) }}</div>
                 <div class="font-white-min text-rigth ml-4" style="font-size: 25px !important;">Personas</div>
             </div>
         </div>
@@ -71,7 +71,7 @@ top: -30vh;">
             <div class="text-center font-white p-5">
                 <div class="font-white-min text-rigth">Aún pueden entrar</div>
                 <i class="material-icons" style="font-size: 70px ; position: relative; top: 8px;">groups</i>
-                <div class="ml-4  d-inline-flex">{{ disponible }}</div>
+                <div class="ml-4  d-inline-flex">{{ numberWithPoint(disponible) }}</div>
                 <div class="font-white-min text-rigth ml-4" style="font-size: 25px !important;">Personas</div>
             </div>
         </div>
