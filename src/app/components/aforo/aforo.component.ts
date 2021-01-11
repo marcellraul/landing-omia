@@ -27,8 +27,13 @@ export type ChartOptions = {
 export class AforoComponent implements OnInit {
   @ViewChild('chart') chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
-
+  public date: any;
+  public datehour: any;
   constructor() {
+    this.date = new Date();
+    this.date.getFullYear();
+    this.datehour = new Date();
+    this.datehour.getFullYear();
     this.chartOptions = {
       series: [30],
       chart: {
