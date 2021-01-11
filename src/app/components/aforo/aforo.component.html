@@ -21,10 +21,29 @@
     </div>
 </div>
 
-<div id="chart">
-    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [plotOptions]="chartOptions.plotOptions"
-        [labels]="chartOptions.labels" [fill]="chartOptions.fill" [colors]="chartOptions.colors"
-        [dataLabels]="chartOptions.dataLabels"></apx-chart>
+<div *ngIf="chartOptions" id="chart">
+    <apx-chart 
+        [series]="chartOptions.series" 
+        [chart]="chartOptions.chart" 
+        [plotOptions]="chartOptions.plotOptions"
+        [labels]="chartOptions.labels" 
+        [fill]="chartOptions.fill" 
+        [colors]="chartOptions.colors"
+        [dataLabels]="chartOptions.dataLabels">
+    </apx-chart>
+</div>
+
+<div class="row">
+    <label style="color: white;">{{ aforo_actual }}</label>
+</div>
+
+<div class="row" *ngIf="chartOptions" >
+    <div class="col-6">
+        <div class="text-center" style="color: white;">Mínimo <br> 1 persona</div>
+    </div>
+    <div class="col-6">
+        <div class="text-center" style="color: white;">Máximo <br> {{ capacidad }} personas</div>
+    </div>
 </div>
 
 <div class="row justify-content-center mb-4">
@@ -32,17 +51,17 @@
         <div class="background-primary">
             <div class="text-center font-white p-5">
                 <i class="material-icons" style="font-size: 70px ; position: relative; top: 8px;"> home</i>
-                <div class="ml-3 d-inline-flex">34%</div>
+                <div class="ml-3 d-inline-flex">{{ porcentaje_aforo }}%</div>
                 <div class="font-white-min ">Porcentaje de ocupación</div>
             </div>
         </div>
     </div>
-    <div class="col-5 " style="">
+    <div class="col-5 ">
         <div class="background-primary">
             <div class="text-center font-white p-5">
                 <div class="font-white-min text-rigth">Máximo permitido</div>
                 <i class="material-icons" style="font-size: 70px ; position: relative; top: 8px;">groups</i>
-                <div class="ml-4  d-inline-flex">1.500</div>
+                <div class="ml-4  d-inline-flex">{{ capacidad }}</div>
                 <div class="font-white-min text-rigth ml-4" style="font-size: 25px !important;">Personas</div>
             </div>
         </div>
@@ -52,7 +71,7 @@
             <div class="text-center font-white p-5">
                 <div class="font-white-min text-rigth">Aún pueden entrar</div>
                 <i class="material-icons" style="font-size: 70px ; position: relative; top: 8px;">groups</i>
-                <div class="ml-4  d-inline-flex">887</div>
+                <div class="ml-4  d-inline-flex">{{ disponible }}</div>
                 <div class="font-white-min text-rigth ml-4" style="font-size: 25px !important;">Personas</div>
             </div>
         </div>

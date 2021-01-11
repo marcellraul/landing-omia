@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  urlService: 'http://54.233.255.233/ServiciosOmiaV2'
 };
 
 /*
