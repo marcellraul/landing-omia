@@ -41,7 +41,9 @@ export class AforoComponent implements OnInit {
 
   public label;
 
-  constructor(private aforoActualService: AforoActualService) {}
+  constructor(private aforoActualService: AforoActualService) {
+    this.getDataChart();
+  }
 
   ngOnInit(): void {
     this.date = new Date();
@@ -49,6 +51,10 @@ export class AforoComponent implements OnInit {
     this.datehour = new Date();
     this.datehour.getFullYear();
 
+    setInterval(() => this.getDataChart(), 60000);
+  }
+
+  public getDataChart(){
     this.aforoActualService.getAforoActual(100032, null, null, null, null, null, null).subscribe((data) => {
       console.log("DATA SERVICE: ", data);
       if(data?.success){
