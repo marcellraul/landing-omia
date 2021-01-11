@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LandingComponent } from './components/landing/landing.component';
 
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     AppRoutingModule,
     BrowserAnimationsModule,
     NgApexchartsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

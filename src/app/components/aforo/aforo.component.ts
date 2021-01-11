@@ -8,6 +8,7 @@ import {
   ChartComponent,
   ApexDataLabels,
 } from 'ng-apexcharts';
+import { AforoActualService } from 'src/app/services/aforo-actual.service';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -17,6 +18,8 @@ export type ChartOptions = {
   fill: ApexFill;
   colors: any;
   dataLabels: ApexDataLabels;
+  responsive: any;
+  title: any;
 };
 
 @Component({
@@ -29,18 +32,55 @@ export class AforoComponent implements OnInit {
   public chartOptions: Partial<ChartOptions>;
   public date: any;
   public datehour: any;
-  constructor() {
+
+  public porcentaje_aforo;
+  public porcentaje_ocupacion;
+  public aforo_actual;
+  public capacidad;
+  public disponible;
+
+  public label;
+
+  constructor(private aforoActualService: AforoActualService) {
+    this.getDataChart();
+  }
+
+  ngOnInit(): void {
     this.date = new Date();
     this.date.getFullYear();
     this.datehour = new Date();
     this.datehour.getFullYear();
+
+    //setInterval(() => this.getDataChart(), 60000);
+  }
+
+  public getDataChart() {
+    this.aforoActualService
+      .getAforoActual(100032, null, null, null, null, null, null)
+      .subscribe((data) => {
+        console.log('DATA SERVICE: ', data);
+        if (data?.success) {
+          this.disponible = data.data[0].disponible;
+          this.capacidad = data.data[0].capacidad;
+          this.aforo_actual = data.data[0].prom * data.data[0].capacidad;
+          this.porcentaje_aforo = Math.round(data.data[0].prom * 100);
+
+          /* this.label = 'Personas ahora: ' + this.aforo_actual; */
+
+          this.generateChart();
+        }
+      });
+  }
+
+  public generateChart() {
     this.chartOptions = {
-      series: [30],
+      series: [this.porcentaje_aforo],
       chart: {
         type: 'radialBar',
-        offsetY: -20,
+        offsetY: -50,
       },
       colors: ['#4CCFCA'],
+      title: 'asd',
       plotOptions: {
         radialBar: {
           startAngle: -90,
@@ -61,20 +101,37 @@ export class AforoComponent implements OnInit {
           dataLabels: {
             name: {
               show: true,
-            },
-            value: {
-              offsetY: -2,
-              fontSize: '76px',
+              fontSize: '35px',
               color: '#ffffff',
+              offsetY: -10,
               fontWeight: 'bold',
             },
+            value: {
+              show: false,
+              offsetY: -100,
+              fontSize: '30px',
+              color: '#ffffff',
+              fontWeight: 'bold',
+              /* formatter(val: number){
+                return val.toString();
+              } */
+            },
+            /* total: {
+                show: true,
+                formatter(opts: any){
+                  console.log(opts);
+                 return opts 
+                }
+            } */
           },
         },
       },
       fill: {},
-      labels: [''],
+      labels: ['Personas ahora mismo'],
     };
   }
 
-  ngOnInit(): void {}
+  getAforoActual() {
+    return this.aforo_actual;
+  }
 }
