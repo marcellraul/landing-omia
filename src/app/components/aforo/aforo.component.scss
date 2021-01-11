@@ -38,3 +38,15 @@
   background: #1f33b0;
   border-radius: 12px;
 }
+
+.media-xlg {
+  position: relative;
+  top: -42vh;
+}
+
+@media (max-width: 1425px) {
+  .media-xlg {
+    position: relative;
+    top: -44vh;
+  }
+}
