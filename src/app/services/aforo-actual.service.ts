@@ -39,8 +39,8 @@ export class AforoActualService {
         .get(this.urlService+'/ApiAnalytic/GetDataResumenocupacionActual/?rol_id='+rol+'&country_id='+country+'&location_id='+location+'&camera_id='+camera+'&instance='+instance+'&clase='+clase+'&analytic_id='+analytics_id, this.headers)
         .pipe(
           map(data => {
-            //return data;
-            return {
+            return data;
+            /* return {
               success: true,
               data: [
                 {
@@ -52,7 +52,7 @@ export class AforoActualService {
                   disponible: 16
                 }
               ]
-            }
+            } */
           })
         );
   }

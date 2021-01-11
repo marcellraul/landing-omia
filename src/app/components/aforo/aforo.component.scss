@@ -41,10 +41,19 @@
 
 .media-xlg {
   position: relative;
-  top: -42vh;
+  top: -54vh;
 }
 
-@media (max-width: 1425px) {
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 1229px) {
+  .media-xlg {
+    position: relative;
+    top: -54vh;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1250px) {
   .media-xlg {
     position: relative;
     top: -44vh;
