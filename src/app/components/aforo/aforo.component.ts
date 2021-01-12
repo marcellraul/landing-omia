@@ -54,7 +54,7 @@ export class AforoComponent implements OnInit {
     this.date.getFullYear();
     this.datehour = new Date();
     this.datehour.getFullYear();
-    
+
     this.aforoActualService
       .getAforoActual(100032, null, null, null, null, null, null)
       .subscribe((data) => {
@@ -62,7 +62,9 @@ export class AforoComponent implements OnInit {
         if (data?.success) {
           this.disponible = data.data[0].disponible;
           this.capacidad = data.data[0].capacidad;
-          this.aforo_actual = Math.round(data.data[0].prom * data.data[0].capacidad);
+          this.aforo_actual = Math.round(
+            data.data[0].prom * data.data[0].capacidad
+          );
           this.porcentaje_aforo = Math.round(data.data[0].prom * 100);
 
           /* this.label = 'Personas ahora: ' + this.aforo_actual; */
@@ -79,6 +81,8 @@ export class AforoComponent implements OnInit {
         type: 'radialBar',
         //offsetY: -50,
         //height: 'auto'
+        //width: 500,
+        height: 800,
       },
       colors: ['#4CCFCA'],
       title: 'asd',
@@ -128,7 +132,7 @@ export class AforoComponent implements OnInit {
         },
       },
       fill: {},
-      labels: ['Porcentaje de ocupación']
+      labels: ['Porcentaje de ocupación'],
       //labels: ['Personas ahora mismo'],
     };
   }
@@ -138,13 +142,13 @@ export class AforoComponent implements OnInit {
   }
 
   public numberWithPoint(x) {
-    if(x != 0){
-      if(x){
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-      }else{
+    if (x != 0) {
+      if (x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+      } else {
         return '';
       }
-    }else{
+    } else {
       return x;
     }
   }
