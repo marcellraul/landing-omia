@@ -21,15 +21,25 @@
     </div>
 </div>
 
-<div *ngIf="chartOptions" id="chart" style=" position: relative; top: -6vh;">
-    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [plotOptions]="chartOptions.plotOptions"
-        [labels]="chartOptions.labels" [fill]="chartOptions.fill" [colors]="chartOptions.colors"
-        [dataLabels]="chartOptions.dataLabels">
-    </apx-chart>
+<div class="row">
+    <div class="col-12">
+        <div *ngIf="chartOptions; else loading" id="chart">
+            <apx-chart [series]="chartOptions.series" 
+                [chart]="chartOptions.chart" 
+                [plotOptions]="chartOptions.plotOptions"
+                [labels]="chartOptions.labels" 
+                [fill]="chartOptions.fill" 
+                [colors]="chartOptions.colors"
+                [dataLabels]="chartOptions.dataLabels">
+            </apx-chart>
+        </div>
+    </div>
 </div>
 
 
-<div class="row media-xlg" *ngIf="chartOptions">
+
+
+<!-- <div class="row media-xlg" *ngIf="chartOptions">
     <div class="col-12 text-center" style="position: relative;
     top: -17vh;
     font-size: 16vh;
@@ -44,16 +54,15 @@
         <div class="text-center" style="color: white; font-size: 2.5vh;">Máximo <br> {{ numberWithPoint(capacidad) }}
             personas</div>
     </div>
-</div>
+</div> -->
 
-<div class="row justify-content-center mb-4" style="    position: relative;
-top: -30vh;">
+<div class="row justify-content-center mb-4">
     <div class="col-10 m-2 mb-4">
         <div class="background-primary">
             <div class="text-center font-white p-5">
                 <i class="material-icons" style="font-size: 70px ; position: relative; top: 8px;"> home</i>
-                <div class="ml-3 d-inline-flex">{{ porcentaje_aforo }}%</div>
-                <div class="font-white-min ">Porcentaje de ocupación</div>
+                <div class="ml-3 d-inline-flex">{{ aforo_actual }}</div>
+                <div class="font-white-min ">Personas ahora mismo</div>
             </div>
         </div>
     </div>
@@ -79,3 +88,11 @@ top: -30vh;">
     </div>
 
 </div>
+
+<ng-template #loading>
+    <div class="row">
+        <div class="col-12 text-center">
+            <label>loading ...</label>
+        </div>
+    </div>
+</ng-template>
