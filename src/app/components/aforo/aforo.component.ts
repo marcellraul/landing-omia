@@ -46,15 +46,15 @@ export class AforoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.date = new Date();
-    this.date.getFullYear();
-    this.datehour = new Date();
-    this.datehour.getFullYear();
-
     setInterval(() => this.getDataChart(), 60000);
   }
 
   public getDataChart() {
+    this.date = new Date();
+    this.date.getFullYear();
+    this.datehour = new Date();
+    this.datehour.getFullYear();
+    
     this.aforoActualService
       .getAforoActual(100032, null, null, null, null, null, null)
       .subscribe((data) => {
@@ -77,7 +77,8 @@ export class AforoComponent implements OnInit {
       series: [this.porcentaje_aforo],
       chart: {
         type: 'radialBar',
-        offsetY: -50,
+        //offsetY: -50,
+        //height: 'auto'
       },
       colors: ['#4CCFCA'],
       title: 'asd',
@@ -101,15 +102,15 @@ export class AforoComponent implements OnInit {
           dataLabels: {
             name: {
               show: true,
-              fontSize: '35px',
+              fontSize: '30px',
               color: '#ffffff',
               offsetY: -10,
               fontWeight: 'bold',
             },
             value: {
-              show: false,
+              show: true,
               offsetY: -100,
-              fontSize: '30px',
+              fontSize: '70px',
               color: '#ffffff',
               fontWeight: 'bold',
               /* formatter(val: number){
@@ -127,7 +128,8 @@ export class AforoComponent implements OnInit {
         },
       },
       fill: {},
-      labels: ['Personas ahora mismo'],
+      labels: ['Porcentaje de ocupación']
+      //labels: ['Personas ahora mismo'],
     };
   }
 
