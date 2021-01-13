@@ -58,7 +58,7 @@ export class AforoComponent implements OnInit {
     this.aforoActualService
       .getAforoActual(100032, null, null, null, null, null, null)
       .subscribe((data) => {
-        console.log('DATA SERVICE: ', data);
+        //console.log('DATA SERVICE: ', data);
         if (data?.success) {
           this.disponible = data.data[0].disponible;
           this.capacidad = data.data[0].capacidad;

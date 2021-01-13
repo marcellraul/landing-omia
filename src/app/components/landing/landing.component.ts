@@ -21,7 +21,7 @@ export class LandingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.ruta.snapshot.params);
+    //console.log(this.ruta.snapshot.params);
 
     this.hash = this.ruta.snapshot.params.hash;
     
