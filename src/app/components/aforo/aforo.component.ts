@@ -56,7 +56,7 @@ export class AforoComponent implements OnInit {
     this.datehour.getFullYear();
 
     this.aforoActualService
-      .getAforoActual(100032, null, null, null, null, null, null)
+      .getAforoActual(140031, null, null, 44, null, null, null)
       .subscribe((data) => {
         //console.log('DATA SERVICE: ', data);
         if (data?.success) {
