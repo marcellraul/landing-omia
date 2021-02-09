@@ -1,17 +1,19 @@
 <div class="row">
-    <div class="col-4 text-center mt-4" style="color:#85FFFD ;">
-        <i class="material-icons" style=" position: relative; top: 3px;"> date_range </i>
+    <div class="col-4 text-center mt-4" style="color:#ffffff ;">
+        <i class="material-icons" style=" position: relative; top: 2px;"> date_range </i>
         <div class="ml-2 d-inline-flex font-secundary">
-            <p> {{date  | date:'longDate' }}</p>
+            <p style="color: #ffffff;"> {{date  | date:'longDate' }}</p>
         </div>
     </div>
     <div class="col-4">
 
     </div>
-    <div class="col-4 text-center mt-4 " style="color:#85FFFD ;">
-        <i class="material-icons" style="position: relative; top: 3px;"> watch_later</i>
+    <div class="col-4 text-center mt-4 " style="color:#ffffff ;">
+        <i class="material-icons" style="position: relative; top: 1px;"> watch_later</i>
         <div class="ml-2 d-inline-flex font-secundary">
-            {{datehour  | date:'shortTime' }}
+            <p style="color: #ffffff;">
+                {{datehour  | date:'shortTime' }}
+            </p>
         </div>
     </div>
 </div>
@@ -26,8 +28,9 @@
 
         <div class="row">
             <div class="col-12">
-                <div *ngIf="chartOptions; else loading" class="card-body" style="margin-bottom: -8em; margin-top: -8em;">
-                    <div  id="chart">
+                <div *ngIf="chartOptions; else loading" class="card-body"
+                    style="margin-bottom: -8em; margin-top: -8em;">
+                    <div id="chart">
                         <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
                             [plotOptions]="chartOptions.plotOptions" [labels]="chartOptions.labels"
                             [fill]="chartOptions.fill" [colors]="chartOptions.colors"

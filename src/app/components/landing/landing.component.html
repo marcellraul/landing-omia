@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div *ngIf="isValid" class="container-fluid" style="background: #031280; ">
+<div *ngIf="isValid" class="container-fluid" style="background: #da291c; ">
 
     <app-aforo></app-aforo>
     <app-footer>
@@ -8,11 +8,11 @@
 </div>
 
 <div *ngIf="!isValid">
-        <div class="container">
-            <div class="row mt-4">
-                <div class="col alert alert-danger text-center">
-                    URL NO VÁLIDA
-                </div>
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col alert alert-danger text-center">
+                URL NO VÁLIDA
             </div>
         </div>
+    </div>
 </div>
