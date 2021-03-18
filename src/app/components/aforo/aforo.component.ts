@@ -54,7 +54,11 @@ export class AforoComponent implements OnInit {
     this.date.getFullYear();
     this.datehour = new Date();
     this.datehour.getFullYear();
-
+    console.log('datehour in timezone: ', this.datehour.getTimezoneOffset());
+    if (this.datehour.getTimezoneOffset() == 180) {
+      //
+      this.datehour.setMinutes(this.datehour.getMinutes() - 120);
+    }
     this.aforoActualService
       .getAforoActual(140031, null, null, 44, null, null, null)
       .subscribe((data) => {
