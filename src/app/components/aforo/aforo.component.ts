@@ -46,18 +46,19 @@ export class AforoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setInterval(() => this.getDataChart(), 60000);
+    setInterval(() => this.getDataChart(), 20000);
+    setInterval(() => this.gerDate(), 1000);
   }
 
-  public getDataChart() {
+  public gerDate() {
     this.date = new Date();
-    this.date.getFullYear();
     this.datehour = new Date();
-    this.datehour.getFullYear();
-    console.log('datehour in timezone: ', this.datehour.getTimezoneOffset());
-    if (this.datehour.getTimezoneOffset() == 180) {
-      this.datehour.setMinutes(this.datehour.getMinutes() - 120);
-    }
+  }
+  public getDataChart() {
+    // console.log('datehour in timezone: ', this.datehour.getTimezoneOffset());
+    // if (this.datehour.getTimezoneOffset() == 180) {
+    //   this.datehour.setMinutes(this.datehour.getMinutes() - 120);
+    // }
 
     this.aforoActualService
       .getAforoActual(140031, null, null, 44, null, null, null)
@@ -95,14 +96,15 @@ export class AforoComponent implements OnInit {
           startAngle: -90,
           endAngle: 90,
           track: {
-            background: '#ffffff',
+            background: '#e7e7e7',
             strokeWidth: '97%',
             margin: 5, // margin is in pixels
             dropShadow: {
               enabled: true,
               top: 2,
               left: 0,
-              opacity: 0.31,
+              color: '#999',
+              opacity: 1,
               blur: 2,
             },
           },
@@ -121,17 +123,7 @@ export class AforoComponent implements OnInit {
               fontSize: '70px',
               color: '#ffffff',
               fontWeight: 'bold',
-              /* formatter(val: number){
-                return val.toString();
-              } */
             },
-            /* total: {
-                show: true,
-                formatter(opts: any){
-                  console.log(opts);
-                 return opts 
-                }
-            } */
           },
         },
       },
